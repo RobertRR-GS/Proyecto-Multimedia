@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Mundo Dulce - Repostería Creativa</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets/imagenes/logo.png" alt="Logo">
+            <h1>Mi Mundo Dulce</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" data-section="inicio">Inicio</a></li>
+                <li><a href="#" data-section="recetas">Recetas</a></li>
+                <li><a href="#" data-section="tecnicas">Técnicas</a></li>
+                <li><a href="#" data-section="calculadora">Calculadora</a></li>
+                <li><a href="#" data-section="contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!--Inicio-->
+        <section id="inicio" class="section active">
+            <div class="hero">
+                <h2>Bienvenido a Mi Mundo Dulce</h2>
+                <p>Tu espacio creativo para explorar el mundo de la repostería</p>
+            </div>
+            
+            <div class="featured-recipes">
+                <h3>Recetas Destacadas</h3>
+                <div class="recipe-grid">
+                    <!-- Receta 1 - Solo la tarjeta -->
+                    <div class="recipe-card">
+                        <img src="assets/imagenes/torta_de_chocolate_esponjosa_10691_600.jpg" alt="Tarta de chocolate" class="recipe-image">
+                        <h4>Torta Triple Chocolate</h4>
+                        <button class="toggle-btn" data-target="full-chocolate">Ver Receta Completa</button>
+                    </div>
+                    
+                    <!-- Receta 2 - Solo la tarjeta -->
+                    <div class="recipe-card">
+                        <img src="assets/imagenes/images.jfif" alt="Cupcakes de vainilla" class="recipe-image">
+                        <h4>Cupcakes de Vainilla</h4>
+                        <button class="toggle-btn" data-target="full-vainilla">Ver Receta Completa</button>
+                    </div>
+
+                    <!-- Receta 3 - Solo la tarjeta -->
+                    <div class="recipe-card">
+                        <img src="assets/imagenes/cover_a0wtn7j2ex_galle.jpg" alt="Galletas decoradas" class="recipe-image">
+                        <h4>Galletas Decoradas</h4>
+                        <button class="toggle-btn" data-target="full-galletas">Ver Receta Completa</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--Recetas-->
+        <section id="recetas" class="section">
+            <h2>Nuestras Recetas</h2>
+            <div class="recipes-container">
+                <div class="recipe-item">
+                    <h3>Galletas Decoradas</h3>
+                    <img src="assets/imagenes/cover_a0wtn7j2ex_galle.jpg" alt="Galletas decoradas" class="recipe-image">
+                    <button class="toggle-btn" data-target="full-galletas">Ver Receta Completa</button>
+                </div>
+            </div>
+        </section>
+
+        <!--Técnicas-->
+        <section id="tecnicas" class="section">
+            <h2>Técnicas de Repostería</h2>
+            <div class="technique">
+                <h3>Montado de Merengue</h3>
+                <p>Aprende la técnica perfecta para montar claras de huevo...</p>
+            </div>
+        </section>
+
+        <!--Calculadora-->
+        <section id="calculadora" class="section">
+            <h2>Calculadora de Medidas</h2>
+            <div class="converter">
+                <p>Próximamente: Conversor de gramos a tazas y temperaturas</p>
+            </div>
+        </section>
+
+        <!--Contacto-->
+        <section id="contacto" class="section">
+            <h2>Contacto</h2>
+            <div class="contact-info">
+                <p>¿Tienes alguna receta especial o sugerencia? ¡Escríbenos!</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 MiMundoDulce - Repostería Creativa. Todos los derechos reservados.</p>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">YouTube</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODALES FUERA DEL FLUJO PRINCIPAL -->
+    
+    <!-- Modal Torta Triple Chocolate -->
+    <div id="full-chocolate" class="recipe-full">
+        <div class="recipe-modal-content">
+            <button class="close-modal-btn" onclick="closeRecipeModal('full-chocolate')">×</button>
+            <div class="recipe-content">
+                <img src="assets/imagenes/torta_de_chocolate_esponjosa_10691_600.jpg" alt="Tarta de chocolate" class="recipe-image-full">
+                <div class="recipe-details">
+                    <h5>Ingredientes:</h5>
+                    <ul>
+                        <li>200g chocolate negro</li>
+                        <li>150g mantequilla</li>
+                        <li>3 huevos</li>
+                        <li>120g azúcar</li>
+                        <li>80g harina</li>
+                    </ul>
+                    <h5>Preparación:</h5>
+                    <ol>
+                        <li>Precalienta el horno a 180°C</li>
+                        <li>Derrite el chocolate con la mantequilla</li>
+                        <li>Bate los huevos con el azúcar hasta blanquear</li>
+                        <li>Incorpora la harina y el chocolate derretido</li>
+                        <li>Hornea por 25-30 minutos</li>
+                    </ol>
+                </div>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/placeholder1" allowfullscreen></iframe>
+                    <button class="expand-video-btn" onclick="expandVideo('https://www.youtube.com/embed/placeholder1')">⛶</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Cupcakes de Vainilla -->
+    <div id="full-vainilla" class="recipe-full">
+        <div class="recipe-modal-content">
+            <button class="close-modal-btn" onclick="closeRecipeModal('full-vainilla')">×</button>
+            <div class="recipe-content">
+                <img src="assets/imagenes/images.jfif" alt="Cupcakes de vainilla" class="recipe-image-full">
+                <div class="recipe-details">
+                    <h5>Ingredientes:</h5>
+                    <ul>
+                        <li>200g harina</li>
+                        <li>150g azúcar</li>
+                        <li>100g mantequilla</li>
+                        <li>2 huevos</li>
+                        <li>125ml leche</li>
+                        <li>1 cda esencia de vainilla</li>
+                    </ul>
+                    <h5>Preparación:</h5>
+                    <ol>
+                        <li>Precalienta el horno a 180°C</li>
+                        <li>Crema la mantequilla con el azúcar</li>
+                        <li>Agrega los huevos uno a uno</li>
+                        <li>Incorpora la harina alternando con la leche</li>
+                        <li>Agrega la esencia de vainilla</li>
+                        <li>Hornea por 20-25 minutos</li>
+                    </ol>
+                </div>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/placeholder2" allowfullscreen></iframe>
+                    <button class="expand-video-btn" onclick="expandVideo('https://www.youtube.com/embed/placeholder2')">⛶</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Galletas Decoradas -->
+    <div id="full-galletas" class="recipe-full">
+        <div class="recipe-modal-content">
+            <button class="close-modal-btn" onclick="closeRecipeModal('full-galletas')">×</button>
+            <div class="recipe-content">
+                <img src="assets/imagenes/cover_a0wtn7j2ex_galle.jpg" alt="Galletas decoradas" class="recipe-image-full">
+                <div class="recipe-details">
+                    <h5>Ingredientes:</h5>
+                    <ul>
+                        <li>300g harina</li>
+                        <li>200g mantequilla</li>
+                        <li>100g azúcar glass</li>
+                        <li>1 huevo</li>
+                        <li>1 cda esencia de vainilla</li>
+                    </ul>
+                    <h5>Preparación:</h5>
+                    <ol>
+                        <li>Precalienta el horno a 180°C</li>
+                        <li>Mezcla la harina con el azúcar glass</li>
+                        <li>Incorpora la mantequilla ablandada</li>
+                        <li>Agrega el huevo y la esencia de vainilla</li>
+                        <li>Forma las galletas y hornea por 12-15 minutos</li>
+                        <li>Decora una vez enfriadas</li>
+                    </ol>
+                </div>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/placeholder3" allowfullscreen></iframe>
+                    <button class="expand-video-btn" onclick="expandVideo('https://www.youtube.com/embed/placeholder3')">⛶</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
