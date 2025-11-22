@@ -115,3 +115,16 @@ function cargarContenidoDinamico(seccion, contenido) {
         elemento.innerHTML = contenido;
     }
 }
+// Inicializar validaciones
+document.addEventListener('DOMContentLoaded', function() {
+    
+    if (typeof configurarBusqueda === 'function') {
+        configurarBusqueda();
+    }
+    if (typeof configurarCalculadora === 'function') {
+        configurarCalculadora();
+    }
+    if (typeof configurarFormularioContacto === 'function') {
+        configurarFormularioContacto();
+    }
+});

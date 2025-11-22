@@ -34,25 +34,40 @@
             <div class="featured-recipes">
                 <h3>Recetas Destacadas</h3>
                 <div class="recipe-grid">
-                    <!-- Receta 1 - Solo la tarjeta -->
                     <div class="recipe-card">
                         <img src="assets/imagenes/torta_de_chocolate_esponjosa_10691_600.jpg" alt="Tarta de chocolate" class="recipe-image">
                         <h4>Torta Triple Chocolate</h4>
                         <button class="toggle-btn" data-target="full-chocolate">Ver Receta Completa</button>
                     </div>
-                    
-                    <!-- Receta 2 - Solo la tarjeta -->
+
                     <div class="recipe-card">
                         <img src="assets/imagenes/images.jfif" alt="Cupcakes de vainilla" class="recipe-image">
                         <h4>Cupcakes de Vainilla</h4>
                         <button class="toggle-btn" data-target="full-vainilla">Ver Receta Completa</button>
                     </div>
 
-                    <!-- Receta 3 - Solo la tarjeta -->
                     <div class="recipe-card">
                         <img src="assets/imagenes/cover_a0wtn7j2ex_galle.jpg" alt="Galletas decoradas" class="recipe-image">
                         <h4>Galletas Decoradas</h4>
                         <button class="toggle-btn" data-target="full-galletas">Ver Receta Completa</button>
+                    </div>
+
+                    <div class="recipe-card">
+                        <img src="assets/imagenes/torta_vainilla.jpg" alt="Torta de Vainilla Esponjosa" class="recipe-image">
+                        <h4>Torta de Vainilla Esponjosa</h4>
+                        <button class="toggle-btn" data-target="full-vainilla-esponjosa">Ver Receta Completa</button>
+                    </div>
+
+                    <div class="recipe-card">
+                        <img src="assets/imagenes/torta_tres_leches.jpg" alt="Torta Tres Leches" class="recipe-image">
+                        <h4>Torta Tres Leches</h4>
+                        <button class="toggle-btn" data-target="full-tres-leches">Ver Receta Completa</button>
+                    </div>
+
+                    <div class="recipe-card">
+                        <img src="assets/imagenes/torta_negra_navideña.jpg" alt="Torta Negra Navideña" class="recipe-image">
+                        <h4>Torta Negra Navideña</h4>
+                        <button class="toggle-btn" data-target="full-negra-navideña">Ver Receta Completa</button>
                     </div>
                 </div>
             </div>
@@ -62,10 +77,32 @@
         <section id="recetas" class="section">
             <h2>Nuestras Recetas</h2>
             <div class="recipes-container">
+                <div class="search-container">
+                    <input type="text" id="search-recipes" placeholder="Buscar recetas..." class="search-input">
+                    <div id="search-feedback" class="feedback-message"></div>
+                </div>
                 <div class="recipe-item">
                     <h3>Galletas Decoradas</h3>
                     <img src="assets/imagenes/cover_a0wtn7j2ex_galle.jpg" alt="Galletas decoradas" class="recipe-image">
                     <button class="toggle-btn" data-target="full-galletas">Ver Receta Completa</button>
+                </div>
+
+                <div class="recipe-item">
+                    <h3>Torta de Vainilla Esponjosa</h3>
+                    <img src="assets/imagenes/torta_vainilla.jpg" alt="Torta de Vainilla Esponjosa" class="recipe-image">
+                    <button class="toggle-btn" data-target="full-vainilla-esponjosa">Ver Receta Completa</button>
+                </div>
+
+                <div class="recipe-item">
+                    <h3>Torta Tres Leches</h3>
+                    <img src="assets/imagenes/torta_tres_leches.jpg" alt="Torta Tres Leches" class="recipe-image">
+                    <button class="toggle-btn" data-target="full-tres-leches">Ver Receta Completa</button>
+                </div>
+
+                <div class="recipe-item">
+                    <h3>Torta Negra Navideña</h3>
+                    <img src="assets/imagenes/torta_negra_navideña.jpg" alt="Torta Negra Navideña" class="recipe-image">
+                    <button class="toggle-btn" data-target="full-negra-navideña">Ver Receta Completa</button>
                 </div>
             </div>
         </section>
@@ -83,7 +120,18 @@
         <section id="calculadora" class="section">
             <h2>Calculadora de Medidas</h2>
             <div class="converter">
-                <p>Próximamente: Conversor de gramos a tazas y temperaturas</p>
+                <div class="converter-form">
+                    <div class="input-group">
+                        <label for="grams-input">Gramos:</label>
+                        <input type="number" id="grams-input" placeholder="Ej: 200" class="converter-input">
+                        <div id="grams-feedback" class="feedback-message"></div>
+                    </div>
+                    <div class="input-group">
+                        <label for="cups-output">Tazas:</label>
+                        <input type="text" id="cups-output" readonly class="converter-output">
+                    </div>
+                    <button id="convert-btn" class="converter-btn">Convertir</button>
+                </div>
             </div>
         </section>
 
@@ -91,12 +139,32 @@
         <section id="contacto" class="section">
             <h2>Contacto</h2>
             <div class="contact-info">
-                <p>¿Tienes alguna receta especial o sugerencia? ¡Escríbenos!</p>
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="contact-name">Nombre:</label>
+                        <input type="text" id="contact-name" class="form-input">
+                        <div id="name-feedback" class="feedback-message"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-email">Email:</label>
+                        <input type="email" id="contact-email" class="form-input">
+                        <div id="email-feedback" class="feedback-message"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-message">Mensaje:</label>
+                        <textarea id="contact-message" rows="5" class="form-textarea"></textarea>
+                        <div id="message-feedback" class="feedback-message"></div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Enviar Mensaje</button>
+                    <div id="form-feedback" class="form-feedback"></div>
+                </form>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <p>&copy; 2025 MiMundoDulce - Repostería Creativa. Todos los derechos reservados.</p>
@@ -108,9 +176,7 @@
         </div>
     </footer>
 
-    <!-- MODALES FUERA DEL FLUJO PRINCIPAL -->
-    
-    <!-- Modal Torta Triple Chocolate -->
+    <!-- MODALES -->
     <div id="full-chocolate" class="recipe-full">
         <div class="recipe-modal-content">
             <button class="close-modal-btn" onclick="closeRecipeModal('full-chocolate')">×</button>
@@ -142,7 +208,6 @@
         </div>
     </div>
 
-    <!-- Modal Cupcakes de Vainilla -->
     <div id="full-vainilla" class="recipe-full">
         <div class="recipe-modal-content">
             <button class="close-modal-btn" onclick="closeRecipeModal('full-vainilla')">×</button>
@@ -176,7 +241,6 @@
         </div>
     </div>
 
-    <!-- Modal Galletas Decoradas -->
     <div id="full-galletas" class="recipe-full">
         <div class="recipe-modal-content">
             <button class="close-modal-btn" onclick="closeRecipeModal('full-galletas')">×</button>
@@ -209,6 +273,125 @@
         </div>
     </div>
 
+    <!-- Modal Torta de Vainilla Esponjosa -->
+    <div id="full-vainilla-esponjosa" class="recipe-full">
+        <div class="recipe-modal-content">
+            <button class="close-modal-btn" onclick="closeRecipeModal('full-vainilla-esponjosa')">×</button>
+            <div class="recipe-content">
+                <img src="assets/imagenes/torta_vainilla.jpg" alt="Torta de Vainilla Esponjosa" class="recipe-image-full">
+                <div class="recipe-details">
+                    <h5>Ingredientes:</h5>
+                    <ul>
+                        <li>2 tazas de harina de trigo</li>
+                        <li>1½ tazas de azúcar</li>
+                        <li>1 taza de mantequilla</li>
+                        <li>4 huevos</li>
+                        <li>1 taza de leche</li>
+                        <li>2 cucharaditas de polvo de hornear</li>
+                        <li>1 cucharadita de esencia de vainilla</li>
+                        <li>½ cucharadita de sal</li>
+                    </ul>
+                    <h5>Preparación:</h5>
+                    <ol>
+                        <li>Precalentar el horno a 180°C y engrasar un molde redondo</li>
+                        <li>En un bowl, batir la mantequilla con el azúcar hasta cremar</li>
+                        <li>Agregar los huevos uno por uno, batiendo bien después de cada uno</li>
+                        <li>Añadir la esencia de vainilla y mezclar</li>
+                        <li>En otro bowl, cernir la harina con el polvo de hornear y la sal</li>
+                        <li>Incorporar los ingredientes secos alternando con la leche</li>
+                        <li>Verter la mezcla en el molde y hornear por 35-40 minutos</li>
+                        <li>Dejar enfriar antes de desmoldar</li>
+                    </ol>
+                </div>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/video_vainilla" allowfullscreen></iframe>
+                    <button class="expand-video-btn" onclick="expandVideo('https://www.youtube.com/embed/video_vainilla')">⛶</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Torta Tres Leches -->
+    <div id="full-tres-leches" class="recipe-full">
+        <div class="recipe-modal-content">
+            <button class="close-modal-btn" onclick="closeRecipeModal('full-tres-leches')">×</button>
+            <div class="recipe-content">
+                <img src="assets/imagenes/torta_tres_leches.jpg" alt="Torta Tres Leches" class="recipe-image-full">
+                <div class="recipe-details">
+                    <h5>Ingredientes:</h5>
+                    <ul>
+                        <li>6 huevos</li>
+                        <li>1 taza de azúcar</li>
+                        <li>1 taza de harina de trigo</li>
+                        <li>1 lata de leche condensada (397g)</li>
+                        <li>1 lata de leche evaporada (354ml)</li>
+                        <li>1 taza de crema de leche</li>
+                        <li>1 cucharadita de esencia de vainilla</li>
+                        <li>½ cucharadita de polvo de hornear</li>
+                    </ul>
+                    <h5>Preparación:</h5>
+                    <ol>
+                        <li>Precalentar el horno a 180°C y engrasar un molde rectangular</li>
+                        <li>Separar las claras de las yemas</li>
+                        <li>Batir las claras a punto de nieve con la mitad del azúcar</li>
+                        <li>Batir las yemas con el azúcar restante hasta blanquear</li>
+                        <li>Incorporar la harina y el polvo de hornear a las yemas</li>
+                        <li>Agregar las claras batidas con movimientos envolventes</li>
+                        <li>Hornear por 25-30 minutos hasta que esté dorado</li>
+                        <li>Mezclar las tres leches con la vainilla</li>
+                        <li>Pinchar el bizcocho y verter la mezcla de leches</li>
+                        <li>Refrigerar por al menos 2 horas antes de servir</li>
+                    </ol>
+                </div>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/video_tres_leches" allowfullscreen></iframe>
+                    <button class="expand-video-btn" onclick="expandVideo('https://www.youtube.com/embed/video_tres_leches')">⛶</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Torta Negra Navideña -->
+    <div id="full-negra-navideña" class="recipe-full">
+        <div class="recipe-modal-content">
+            <button class="close-modal-btn" onclick="closeRecipeModal('full-negra-navideña')">×</button>
+            <div class="recipe-content">
+                <img src="assets/imagenes/torta_negra_navideña.jpg" alt="Torta Negra Navideña" class="recipe-image-full">
+                <div class="recipe-details">
+                    <h5>Ingredientes:</h5>
+                    <ul>
+                        <li>2 tazas de harina de trigo</li>
+                        <li>1½ tazas de azúcar</li>
+                        <li>1 taza de mantequilla</li>
+                        <li>4 huevos</li>
+                        <li>1 taza de leche</li>
+                        <li>½ taza de cacao en polvo</li>
+                        <li>2 cucharaditas de polvo de hornear</li>
+                        <li>1 cucharadita de esencia de vainilla</li>
+                        <li>½ cucharadita de sal</li>
+                        <li>1 taza de frutas confitadas (para decoración)</li>
+                    </ul>
+                    <h5>Preparación:</h5>
+                    <ol>
+                        <li>Precalentar el horno a 180°C y engrasar un molde redondo</li>
+                        <li>En un bowl, batir la mantequilla con el azúcar hasta cremar</li>
+                        <li>Agregar los huevos uno por uno, batiendo bien después de cada uno</li>
+                        <li>Añadir la esencia de vainilla y mezclar</li>
+                        <li>En otro bowl, cernir la harina, cacao, polvo de hornear y sal</li>
+                        <li>Incorporar los ingredientes secos alternando con la leche</li>
+                        <li>Verter la mezcla en el molde y hornear por 35-40 minutos</li>
+                        <li>Dejar enfriar y decorar con frutas confitadas</li>
+                    </ol>
+                </div>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/video_negra_navideña" allowfullscreen></iframe>
+                    <button class="expand-video-btn" onclick="expandVideo('https://www.youtube.com/embed/video_negra_navideña')">⛶</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script src="validaciones.js"></script>
 </body>
 </html>

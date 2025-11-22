@@ -524,3 +524,224 @@ footer {
         min-height: 250px;
     }
 }
+/* Búsqueda */
+.search-container {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.search-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 1rem;
+    border: 2px solid #ff6b6b;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #ff5252;
+    box-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
+}
+
+/* Calculadora */
+.converter-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #ff6b6b;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.converter-input,
+.converter-output {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.converter-input:focus {
+    outline: none;
+    border-color: #ff6b6b;
+    box-shadow: 0 0 8px rgba(255, 107, 107, 0.2);
+}
+
+.converter-output {
+    background-color: #f8f9fa;
+    border-color: #d0d0d0;
+}
+
+.converter-btn {
+    width: 100%;
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.converter-btn:hover {
+    background: #ff5252;
+}
+
+/* Formulario de Contacto */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #ff6b6b;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: #ff6b6b;
+    box-shadow: 0 0 8px rgba(255, 107, 107, 0.2);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.submit-btn {
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background: #ff5252;
+}
+
+/* Mensajes de Feedback */
+.feedback-message {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    font-family: 'Montserrat', sans-serif;
+    min-height: 20px;
+}
+
+.form-feedback {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Estados de validación */
+.input-error {
+    border-color: #ff4757 !important;
+    background-color: #fff5f5;
+}
+
+.input-success {
+    border-color: #2ed573 !important;
+    background-color: #f1fff7;
+}
+
+.feedback-error {
+    color: #ff4757;
+    font-weight: 500;
+}
+
+.feedback-success {
+    color: #2ed573;
+    font-weight: 500;
+}
+
+.feedback-info {
+    color: #3742fa;
+    font-weight: 500;
+}
+
+/* Mejoras de legibilidad */
+.recipe-details ul,
+.recipe-details ol {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #444;
+}
+
+.recipe-details li {
+    margin-bottom: 0.5rem;
+}
+
+/* Mejoras de contraste */
+.hero h2,
+.featured-recipes h3,
+.recipes-container h2,
+.technique h2,
+.converter h2,
+.contact-info h2 {
+    color: #d35400;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Responsive para nuevos elementos */
+@media (max-width: 768px) {
+    .search-input {
+        max-width: 100%;
+    }
+    
+    .converter-form {
+        max-width: 100%;
+    }
+    
+    .contact-form {
+        max-width: 100%;
+    }
+    
+    .form-input,
+    .form-textarea {
+        font-size: 16px; /* Previene zoom en iOS */
+    }
+}
