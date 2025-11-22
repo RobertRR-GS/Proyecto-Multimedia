@@ -1,0 +1,11 @@
+Elecciones de Diseño Basadas en Principios de Cognición y Atención:  
+Los colores rosados y rojizos de "Mi Mundo Dulce" fueron elegidos específicamente para evocar sensaciones de dulzura y calidez, 
+creando una conexión emocional inmediata con el mundo de la repostería. El contraste cuidadoso entre estos tonos vibrantes y 
+fondos suaves hace que la información sea fácil de leer y agradable a la vista. Las fuentes seleccionadas combinan la elegancia de 
+Playfair Display para los títulos con la claridad de Montserrat para los textos, guiando naturalmente la atención del usuario hacia
+ lo más importante primero.
+
+Cada elemento de la interfaz está pensado para ser intuitivo y fácil de usar. Las animaciones suaves ayudan a dirigir la atención 
+sin resultar molestas, mientras que los mensajes de color en los formularios permiten entender de inmediato si hay errores o confirmaciones. 
+Los botones responden al tacto dando una sensación de interactividad que hace la navegación más satisfactoria. El diseño limpio y organizado 
+permite encontrar recetas rápidamente, haciendo que la experiencia sea agradable tanto para principiantes como para expertos en repostería.
