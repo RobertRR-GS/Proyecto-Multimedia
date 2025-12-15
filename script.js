@@ -56,7 +56,6 @@ function configurarBotonesToggle() {
             const elemento = document.getElementById(targetId);
 
             if (elemento) {
-                // Mostrar modal y añadir clase al body
                 elemento.classList.add('active');
                 document.body.classList.add('modal-open');
             }
@@ -68,7 +67,6 @@ function closeRecipeModal(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) {
         modal.classList.remove('active');
-        // Remover clase del body solo si no hay otros modales abiertos
         const modalesAbiertos = document.querySelectorAll('.recipe-full.active');
         if (modalesAbiertos.length === 0) {
             document.body.classList.remove('modal-open');
@@ -77,7 +75,6 @@ function closeRecipeModal(modalId) {
 }
 
 function expandVideo(videoUrl) {
-    // Crear modal de video
     const videoModal = document.createElement('div');
     videoModal.className = 'video-modal';
     videoModal.innerHTML = `
@@ -95,7 +92,6 @@ function closeVideoModal() {
     const videoModal = document.querySelector('.video-modal');
     if (videoModal) {
         videoModal.remove();
-        // Remover clase del body
         document.body.classList.remove('modal-open');
     }
 }
@@ -115,16 +111,60 @@ function cargarContenidoDinamico(seccion, contenido) {
         elemento.innerHTML = contenido;
     }
 }
-// Inicializar validaciones
+
+// Función reutilizable que acepta los IDs como parámetros
+function configurarVideo(idVideo, idBotonPlay, idBotonPause) {
+    const video = document.getElementById(idVideo);
+    const btnPlay = document.getElementById(idBotonPlay);
+    const btnPause = document.getElementById(idBotonPause);
+    if (video && btnPlay && btnPause) {
+        
+        btnPlay.addEventListener('click', function() {
+            video.play();
+        });
+
+        btnPause.addEventListener('click', function() {
+            video.pause();
+        });
+        
+        console.log(`Video configurado: ${idVideo}`);
+    }
+}
+
+// Inicializar TODOS los videos
 document.addEventListener('DOMContentLoaded', function() {
     
-    if (typeof configurarBusqueda === 'function') {
-        configurarBusqueda();
-    }
-    if (typeof configurarCalculadora === 'function') {
-        configurarCalculadora();
-    }
-    if (typeof configurarFormularioContacto === 'function') {
-        configurarFormularioContacto();
-    }
+    // 1. Chocolate
+    configurarVideo('video-chocolate', 'btn-play-choco', 'btn-pause-choco');
+    
+    // 2. Vainilla (Cupcakes)
+    configurarVideo('video-vainilla', 'btn-play-vainilla', 'btn-pause-vainilla');
+    
+    // 3. Galletas
+    configurarVideo('video-galletas', 'btn-play-galletas', 'btn-pause-galletas');
+    
+    // 4. Torta de Vainilla Esponjosa 
+    
+    configurarVideo('video-vainilla-esponjosa', 'btn-play-esponjosa', 'btn-pause-esponjosa');
+    
+    // 5. Tres Leches 
+    configurarVideo('video-tresleches', 'btn-play-tresleches', 'btn-pause-tresleches');
+    
+    // 6. Negra Navideña 
+    configurarVideo('video-torta-negra', 'btn-play-negra', 'btn-pause-negra');
+});
+
+// Lógica de Pantalla de Carga ---
+
+window.addEventListener('load', function() {
+    const loader = document.getElementById('loader');
+    
+    setTimeout(function() {
+        if (loader) {
+            loader.classList.add('loader-hidden');
+            setTimeout(() => {
+                loader.remove();
+            }, 500);
+        }
+    }, 2000); 
 });

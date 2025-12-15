@@ -731,17 +731,112 @@ footer {
     .search-input {
         max-width: 100%;
     }
-    
+
     .converter-form {
         max-width: 100%;
     }
-    
+
     .contact-form {
         max-width: 100%;
     }
-    
+
     .form-input,
     .form-textarea {
         font-size: 16px; /* Previene zoom en iOS */
     }
+}
+/* Controles de Video Simple */
+.video-simple-wrapper {
+    margin-top: 1.5rem;
+    text-align: center;
+    width: 100%; 
+}
+
+.video-simple-wrapper video {
+    width: 100%;          
+    max-height: 300px;    
+    object-fit: contain;  
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background-color: #000;
+}
+
+.simple-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap; 
+}
+
+.control-btn {
+    background-color: #ff6b6b; 
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+.control-btn:hover {
+    background-color: #ff5252;
+}
+
+/* --- PANTALLA DE CARGA (Fase 3) --- */
+
+.loader-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff9f5; /* Tu fondo crema */
+    z-index: 99999; /* Encima de todo, incluso modales */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease; /* Desvanecimiento suave */
+}
+
+/* Clase para ocultar */
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Animación 1: Logo Palpitando */
+.loader-logo {
+    width: 120px;
+    animation: latido 1.5s infinite alternate;
+}
+
+/* Animación 2: Círculo Girando */
+.loader-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #ffe8e8; /* Borde suave */
+    border-top: 5px solid #ff6b6b; /* Borde rosado fuerte */
+    border-radius: 50%;
+    animation: girar 1s linear infinite;
+}
+
+/* Definición de Animaciones (Keyframes) */
+@keyframes girar {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes latido {
+    from { transform: scale(1); filter: brightness(100%); }
+    to { transform: scale(1.1); filter: brightness(110%); }
 }
