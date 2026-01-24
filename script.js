@@ -1,170 +1,190 @@
-// Navegación SPA
-document.addEventListener('DOMContentLoaded', function() {
-    // Mostrar sección inicial
-    mostrarSeccion('inicio');
-    
-    // Configurar navegación
-    configurarNavegacion();
-    
-    // Configurar botones de toggle
-    configurarBotonesToggle();
-});
+/* ESTRUCTURA MODULAR - FASE 4*/
 
-function configurarNavegacion() {
-    const enlaces = document.querySelectorAll('nav a');
-    
-    enlaces.forEach(enlace => {
-        enlace.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const seccion = this.getAttribute('data-section');
-            mostrarSeccion(seccion);
-            
-            // Actualizar clase activa en navegación
-            enlaces.forEach(link => link.classList.remove('active'));
-            this.classList.add('active');
-        });
-    });
-}
-
-function mostrarSeccion(seccionId) {
-    // Ocultar todas las secciones
-    const secciones = document.querySelectorAll('.section');
-    secciones.forEach(seccion => {
-        seccion.classList.remove('active');
-    });
-    
-    // Mostrar sección seleccionada
-    const seccionActiva = document.getElementById(seccionId);
-    if (seccionActiva) {
-        seccionActiva.classList.add('active');
+const App = {
+    // Inicialización principal
+    init: function() {
+        console.log("Iniciando aplicación...");
         
-        // Scroll suave al inicio de la sección
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    }
-}
+        try {
+            // Iniciamos los módulos
+            this.Loader.init();
+            this.Navegacion.init();
+            this.Modales.init();
+            this.Multimedia.init();
+            
+            this.iniciarValidaciones();
+            
+        } catch (error) {
+            console.error("⚠️ Error crítico al iniciar:", error.message);
+        }
+    },
 
-function configurarBotonesToggle() {
-    const botones = document.querySelectorAll('.toggle-btn');
+    //Módulo de Pantalla de Carga
+    Loader: {
+        init: function() {
+            const loader = document.getElementById('loader');
+            if (loader) {
 
-    botones.forEach(boton => {
-        boton.addEventListener('click', function() {
-            const targetId = this.getAttribute('data-target');
-            const elemento = document.getElementById(targetId);
+                setTimeout(() => {
+                    loader.classList.add('loader-hidden');
+                    setTimeout(() => {
+                        if (loader.parentNode) {
+                            loader.remove();
+                        }
+                    }, 500);
+                }, 2000); 
+            }
+        }
+    },
 
-            if (elemento) {
-                elemento.classList.add('active');
+    // Módulo de Navegación
+    Navegacion: {
+        init: function() {
+            this.configurarEnlaces();
+            this.mostrarSeccion('inicio');
+        },
+
+        configurarEnlaces: function() {
+            const enlaces = document.querySelectorAll('nav a');
+            enlaces.forEach(enlace => {
+                enlace.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const seccionId = enlace.getAttribute('data-section');
+                    this.mostrarSeccion(seccionId);
+                    
+                    enlaces.forEach(l => l.classList.remove('active'));
+                    enlace.classList.add('active');
+                });
+            });
+        },
+
+        mostrarSeccion: function(seccionId) {
+            const secciones = document.querySelectorAll('.section');
+            const seccionActiva = document.getElementById(seccionId);
+            
+            if (!seccionActiva) return;
+
+            secciones.forEach(s => s.classList.remove('active'));
+            seccionActiva.classList.add('active');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            const header = document.querySelector('header');
+            if(header) header.classList.remove('scrolled');
+        }
+    },
+
+    // Módulo de Modales 
+    Modales: {
+        init: function() {
+            this.configurarApertura();
+            this.configurarCierre();
+        },
+
+        configurarApertura: function() {
+            const botones = document.querySelectorAll('.toggle-btn');
+            botones.forEach(boton => {
+                boton.addEventListener('click', () => {
+                    const targetId = boton.getAttribute('data-target');
+                    this.abrir(targetId);
+                });
+            });
+        },
+
+        configurarCierre: function() {
+            document.querySelectorAll('.close-modal-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const modalId = e.target.closest('.recipe-full').id;
+                    this.cerrar(modalId);
+                });
+            });
+
+            window.addEventListener('click', (e) => {
+                if (e.target.classList.contains('recipe-full')) {
+                    this.cerrar(e.target.id);
+                }
+            });
+        },
+
+        abrir: function(id) {
+            const modal = document.getElementById(id);
+            if (modal) {
+                modal.classList.add('active');
                 document.body.classList.add('modal-open');
             }
-        });
-    });
-}
+        },
 
-function closeRecipeModal(modalId) {
-    const modal = document.getElementById(modalId);
-    if (modal) {
-        modal.classList.remove('active');
-        const modalesAbiertos = document.querySelectorAll('.recipe-full.active');
-        if (modalesAbiertos.length === 0) {
-            document.body.classList.remove('modal-open');
+        cerrar: function(id) {
+            const modal = document.getElementById(id);
+            if (modal) {
+                modal.classList.remove('active');
+                const video = modal.querySelector('video');
+                if(video) video.pause();
+                
+                if (document.querySelectorAll('.recipe-full.active').length === 0) {
+                    document.body.classList.remove('modal-open');
+                }
+            }
         }
-    }
-}
+    },
 
-function expandVideo(videoUrl) {
-    const videoModal = document.createElement('div');
-    videoModal.className = 'video-modal';
-    videoModal.innerHTML = `
-        <div class="video-container">
-            <iframe src="${videoUrl}" allowfullscreen></iframe>
-        </div>
-        <button class="close-btn" onclick="closeVideoModal()">×</button>
-    `;
-    document.body.appendChild(videoModal);
-    videoModal.classList.add('active');
-    document.body.classList.add('modal-open');
-}
+    // Módulo Multimedia 
+    Multimedia: {
+        init: function() {
+            const videosConfig = [
+                { id: 'video-chocolate', playBtn: 'btn-play-choco', pauseBtn: 'btn-pause-choco' },
+                { id: 'video-vainilla', playBtn: 'btn-play-vainilla', pauseBtn: 'btn-pause-vainilla' },
+                { id: 'video-galletas', playBtn: 'btn-play-galletas', pauseBtn: 'btn-pause-galletas' },
+                { id: 'video-vainilla-esponjosa', playBtn: 'btn-play-esponjosa', pauseBtn: 'btn-pause-esponjosa' },
+                { id: 'video-tresleches', playBtn: 'btn-play-tresleches', pauseBtn: 'btn-pause-tresleches' },
+                { id: 'video-torta-negra', playBtn: 'btn-play-negra', pauseBtn: 'btn-pause-negra' }
+            ];
 
-function closeVideoModal() {
-    const videoModal = document.querySelector('.video-modal');
-    if (videoModal) {
-        videoModal.remove();
-        document.body.classList.remove('modal-open');
-    }
-}
+            videosConfig.forEach(config => {
+                this.configurarVideo(config.id, config.playBtn, config.pauseBtn);
+            });
+            
+            this.iniciarEfectosVisuales();
+        },
 
-// Cerrar modal al hacer clic fuera del contenido
-document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('recipe-full')) {
-        const modalId = e.target.id;
-        closeRecipeModal(modalId);
-    }
-});
+        configurarVideo: function(idVideo, idPlay, idPause) {
+            const video = document.getElementById(idVideo);
+            const btnPlay = document.getElementById(idPlay);
+            const btnPause = document.getElementById(idPause);
 
-// Función auxiliar para simular carga de contenido
-function cargarContenidoDinamico(seccion, contenido) {
-    const elemento = document.getElementById(seccion);
-    if (elemento) {
-        elemento.innerHTML = contenido;
-    }
-}
-
-// Función reutilizable que acepta los IDs como parámetros
-function configurarVideo(idVideo, idBotonPlay, idBotonPause) {
-    const video = document.getElementById(idVideo);
-    const btnPlay = document.getElementById(idBotonPlay);
-    const btnPause = document.getElementById(idBotonPause);
-    if (video && btnPlay && btnPause) {
+            if (video && btnPlay && btnPause) {
+                btnPlay.addEventListener('click', () => video.play());
+                btnPause.addEventListener('click', () => video.pause());
+            }
+        },
         
-        btnPlay.addEventListener('click', function() {
-            video.play();
-        });
+        iniciarEfectosVisuales: function() {
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) header.classList.add('scrolled');
+                else header.classList.remove('scrolled');
+            });
 
-        btnPause.addEventListener('click', function() {
-            video.pause();
-        });
-        
-        console.log(`Video configurado: ${idVideo}`);
-    }
-}
-
-// Inicializar TODOS los videos
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // 1. Chocolate
-    configurarVideo('video-chocolate', 'btn-play-choco', 'btn-pause-choco');
-    
-    // 2. Vainilla (Cupcakes)
-    configurarVideo('video-vainilla', 'btn-play-vainilla', 'btn-pause-vainilla');
-    
-    // 3. Galletas
-    configurarVideo('video-galletas', 'btn-play-galletas', 'btn-pause-galletas');
-    
-    // 4. Torta de Vainilla Esponjosa 
-    
-    configurarVideo('video-vainilla-esponjosa', 'btn-play-esponjosa', 'btn-pause-esponjosa');
-    
-    // 5. Tres Leches 
-    configurarVideo('video-tresleches', 'btn-play-tresleches', 'btn-pause-tresleches');
-    
-    // 6. Negra Navideña 
-    configurarVideo('video-torta-negra', 'btn-play-negra', 'btn-pause-negra');
-});
-
-// Lógica de Pantalla de Carga ---
-
-window.addEventListener('load', function() {
-    const loader = document.getElementById('loader');
-    
-    setTimeout(function() {
-        if (loader) {
-            loader.classList.add('loader-hidden');
             setTimeout(() => {
-                loader.remove();
-            }, 500);
+                const toast = document.getElementById('promo-toast');
+                if (toast) toast.classList.add('mostrar');
+            }, 3000);
         }
-    }, 2000); 
+    },
+    
+    iniciarValidaciones: function() {
+        if (typeof configurarBusqueda === 'function') configurarBusqueda();
+        if (typeof configurarCalculadora === 'function') configurarCalculadora();
+        if (typeof configurarFormularioContacto === 'function') configurarFormularioContacto();
+    }
+};
+
+// Iniciar App
+document.addEventListener('DOMContentLoaded', () => {
+    App.init();
+    
+    window.cerrarPromo = function() {
+        const toast = document.getElementById('promo-toast');
+        if (toast) toast.classList.remove('mostrar');
+    };
 });
